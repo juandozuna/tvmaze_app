@@ -24,8 +24,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        body: Center(
-      child: Text('data'),
-    ));
+      body: CenterLoading(),
+    );
   }
 }
