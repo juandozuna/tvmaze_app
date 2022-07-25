@@ -8,7 +8,11 @@ class AppColors {
 
 class AppValues {
   static const double showItemWidth = 100;
+
   static const double defaultPadding = 8;
+  static const double defaultMargin = 8;
+
+  static const double defaultBorderRadius = 8;
 }
 
 class AppTheme {

@@ -39,8 +39,17 @@ class _SearchAppBarState extends State<SearchAppBar> {
   }
 
   Widget _buildSearchField() {
-    return Padding(
-      padding: const EdgeInsets.all(AppValues.defaultPadding),
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        vertical: AppValues.defaultMargin,
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppValues.defaultPadding,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.searchFieldBackground,
+        borderRadius: BorderRadius.circular(AppValues.defaultBorderRadius),
+      ),
       child: TextField(
         onSubmitted: (value) {
           widget.onSearch!(value);
@@ -51,8 +60,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
         textInputAction: TextInputAction.search,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          border: const OutlineInputBorder(),
-          fillColor: AppColors.searchFieldBackground,
+          border: InputBorder.none,
           hintText: translate('search'),
         ),
       ),
