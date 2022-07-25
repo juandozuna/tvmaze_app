@@ -7,13 +7,16 @@ import 'package:tvmaze_app/data/remote_service_factory.dart';
 import 'package:tvmaze_app/data/repositories/show_data_repository.dart';
 import 'package:tvmaze_app/data/services/show_service.dart';
 import 'package:tvmaze_app/domain/repositories/show_repository.dart';
+import 'package:tvmaze_app/presentation/providers/init_provider.dart';
 
 final _injector = GetIt.instance;
 
 List<SingleChildWidget> init() {
   _initInjector();
 
-  final providers = [];
+  final List<Object?> providers = [
+    get<InitProvider>(),
+  ];
 
   return providers.map((e) {
     if (e is ChangeNotifier) return ChangeNotifierProvider.value(value: e);
@@ -22,11 +25,18 @@ List<SingleChildWidget> init() {
 }
 
 void _initInjector() {
+  _registerNavKey();
   _registerNetworkService();
   _registerServices();
   _registerRepositories();
   _registerUseCases();
   _registerProviders();
+}
+
+void _registerNavKey() {
+  _injector.registerSingleton<GlobalKey<NavigatorState>>(
+    GlobalKey<NavigatorState>(),
+  );
 }
 
 void _registerNetworkService() {
@@ -47,7 +57,16 @@ void _registerRepositories() {
 
 void _registerUseCases() {}
 
-void _registerProviders() {}
+void _registerProviders() {
+  _injector.registerSingleton<InitProvider>(
+    InitProvider(
+      getNavigator(),
+    ),
+  );
+}
 
 /// Will get a registered type from the injector.
 T get<T>() => _injector<T>();
+
+GlobalKey<NavigatorState> getNavigator() =>
+    _injector<GlobalKey<NavigatorState>>();
