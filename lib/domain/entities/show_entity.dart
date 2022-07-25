@@ -8,6 +8,7 @@ class ShowEntity extends Equatable {
   final List<String> genres;
   final String status;
   final String network;
+  final double rating;
 
   const ShowEntity({
     required this.id,
@@ -17,6 +18,7 @@ class ShowEntity extends Equatable {
     required this.genres,
     required this.status,
     required this.network,
+    required this.rating,
   });
 
   @override
@@ -28,6 +30,7 @@ class ShowEntity extends Equatable {
         genres,
         status,
         network,
+        rating,
       ];
 
   @override

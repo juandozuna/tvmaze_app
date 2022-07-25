@@ -10,6 +10,7 @@ class ShowMapper {
         name: model.name,
         network: model.network.name,
         status: model.status,
+        rating: model.rating.average,
       );
 
   static List<ShowEntity> toEntityList(List<ShowModel> models) =>
