@@ -10,4 +10,7 @@ abstract class ShowService {
 
   @GET('/shows')
   Future<List<ShowModel>> getShows([@Query('page') int page = 0]);
+
+  @GET('/search/shows')
+  Future<List<ShowModel>> getShowsByName(@Query('q') String name);
 }
