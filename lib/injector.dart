@@ -66,7 +66,7 @@ void _registerProviders() {
 }
 
 /// Will get a registered type from the injector.
-T get<T>() => _injector<T>();
+T get<T extends Object>() => _injector<T>();
 
 GlobalKey<NavigatorState> getNavigator() =>
     _injector<GlobalKey<NavigatorState>>();
