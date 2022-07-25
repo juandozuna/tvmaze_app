@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tvmaze_app/presentation/models/single_show.dart';
-import 'package:tvmaze_app/presentation/shows/show_list_item.dart';
+import 'package:tvmaze_app/presentation/widgets/show_list/show_list_item.dart';
 
 class ShowListView extends StatefulWidget {
   final List<SingleShow> shows;
