@@ -36,6 +36,8 @@ class _ShowsPageState extends State<ShowsPage> {
             itemCount: shows.length,
             itemBuilder: (ctx, i) => ShowListItem(
               shows[i],
+              i % 2 == 0,
+              key: ValueKey(shows[i].id),
             ),
           );
         },

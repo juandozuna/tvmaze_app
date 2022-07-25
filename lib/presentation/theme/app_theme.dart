@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static MaterialColor primarySwatch = Colors.teal;
+  static Color oddListBackground = Colors.grey.shade300;
 }
 
-class AppSizes {}
+class AppValues {
+  static const double showItemWidth = 100;
+}
 
 class AppTheme {
   static getTheme() {

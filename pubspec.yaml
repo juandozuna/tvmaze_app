@@ -44,6 +44,7 @@ dependencies:
   flutter_translate: ^4.0.3
   flutter_translate_annotations: ^2.1.0
   cached_network_image: ^3.2.1
+  tinycolor2: ^2.1.0
 
 dev_dependencies:
   flutter_test:
