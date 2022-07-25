@@ -7,6 +7,7 @@ import 'package:tvmaze_app/data/remote_service_factory.dart';
 import 'package:tvmaze_app/data/repositories/show_data_repository.dart';
 import 'package:tvmaze_app/data/services/show_service.dart';
 import 'package:tvmaze_app/domain/repositories/show_repository.dart';
+import 'package:tvmaze_app/domain/useCases/get_shows_use_case.dart';
 import 'package:tvmaze_app/presentation/providers/init_provider.dart';
 
 final _injector = GetIt.instance;
@@ -55,7 +56,11 @@ void _registerRepositories() {
   );
 }
 
-void _registerUseCases() {}
+void _registerUseCases() {
+  _injector.registerSingleton<GetShowsUseCase>(
+    GetShowsUseCase(get<ShowRepository>()),
+  );
+}
 
 void _registerProviders() {
   _injector.registerSingleton<InitProvider>(
