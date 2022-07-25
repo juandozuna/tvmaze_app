@@ -8,9 +8,9 @@ class ShowMapper {
         genres: model.genres.toList(),
         imageUrl: model.image.original,
         name: model.name,
-        network: model.network.name,
+        network: model.network?.name ?? 'N/A',
         status: model.status,
-        rating: model.rating.average,
+        rating: model.rating?.average ?? 0,
       );
 
   static List<ShowEntity> toEntityList(List<ShowModel> models) =>

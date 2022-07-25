@@ -14,17 +14,17 @@ class ShowModel extends Equatable {
   final String language;
   final List<String> genres;
   final String status;
-  final int runtime;
-  final int averageRuntime;
+  final int? runtime;
+  final int? averageRuntime;
   final DateTime premiered;
-  final DateTime ended;
-  final String officialSite;
-  final ShowRating rating;
+  final DateTime? ended;
+  final String? officialSite;
+  final ShowRating? rating;
   final int weight;
-  final ShowNetworkModel network;
+  final ShowNetworkModel? network;
   final ShowImageModel image;
   final String summary;
-  final int updated;
+  final int? updated;
 
   const ShowModel({
     required this.id,
@@ -80,7 +80,7 @@ class ShowModel extends Equatable {
 
 @JsonSerializable(explicitToJson: true)
 class ShowRating extends Equatable {
-  final double average;
+  final double? average;
 
   const ShowRating({
     required this.average,

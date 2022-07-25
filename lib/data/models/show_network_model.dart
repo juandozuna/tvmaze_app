@@ -6,9 +6,9 @@ part 'show_network_model.g.dart';
 @JsonSerializable(explicitToJson: true)
 class ShowNetworkModel extends Equatable {
   final int id;
-  final String name;
-  final ShowCountryModel country;
-  final String officialSite;
+  final String? name;
+  final ShowCountryModel? country;
+  final String? officialSite;
 
   const ShowNetworkModel({
     required this.id,

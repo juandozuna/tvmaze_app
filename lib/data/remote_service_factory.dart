@@ -10,5 +10,12 @@ Dio createDioClient() {
 
   final dio = Dio(options);
 
+  dio.interceptors.add(LogInterceptor(
+    requestHeader: true,
+    requestBody: true,
+    responseBody: true,
+    responseHeader: true,
+  ));
+
   return dio;
 }

@@ -15,18 +15,23 @@ ShowModel _$ShowModelFromJson(Map<String, dynamic> json) => ShowModel(
       genres:
           (json['genres'] as List<dynamic>).map((e) => e as String).toList(),
       status: json['status'] as String,
-      runtime: json['runtime'] as int,
-      averageRuntime: json['averageRuntime'] as int,
+      runtime: json['runtime'] as int?,
+      averageRuntime: json['averageRuntime'] as int?,
       premiered: DateTime.parse(json['premiered'] as String),
-      ended: DateTime.parse(json['ended'] as String),
-      officialSite: json['officialSite'] as String,
-      rating: ShowRating.fromJson(json['rating'] as Map<String, dynamic>),
+      ended: json['ended'] == null
+          ? null
+          : DateTime.parse(json['ended'] as String),
+      officialSite: json['officialSite'] as String?,
+      rating: json['rating'] == null
+          ? null
+          : ShowRating.fromJson(json['rating'] as Map<String, dynamic>),
       weight: json['weight'] as int,
-      network:
-          ShowNetworkModel.fromJson(json['network'] as Map<String, dynamic>),
+      network: json['network'] == null
+          ? null
+          : ShowNetworkModel.fromJson(json['network'] as Map<String, dynamic>),
       image: ShowImageModel.fromJson(json['image'] as Map<String, dynamic>),
       summary: json['summary'] as String,
-      updated: json['updated'] as int,
+      updated: json['updated'] as int?,
     );
 
 Map<String, dynamic> _$ShowModelToJson(ShowModel instance) => <String, dynamic>{
@@ -40,18 +45,18 @@ Map<String, dynamic> _$ShowModelToJson(ShowModel instance) => <String, dynamic>{
       'runtime': instance.runtime,
       'averageRuntime': instance.averageRuntime,
       'premiered': instance.premiered.toIso8601String(),
-      'ended': instance.ended.toIso8601String(),
+      'ended': instance.ended?.toIso8601String(),
       'officialSite': instance.officialSite,
-      'rating': instance.rating.toJson(),
+      'rating': instance.rating?.toJson(),
       'weight': instance.weight,
-      'network': instance.network.toJson(),
+      'network': instance.network?.toJson(),
       'image': instance.image.toJson(),
       'summary': instance.summary,
       'updated': instance.updated,
     };
 
 ShowRating _$ShowRatingFromJson(Map<String, dynamic> json) => ShowRating(
-      average: (json['average'] as num).toDouble(),
+      average: (json['average'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$ShowRatingToJson(ShowRating instance) =>

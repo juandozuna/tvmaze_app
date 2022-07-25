@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:tvmaze_app/domain/error.dart';
 
 abstract class BaseNotifierProvider with ChangeNotifier {
+  bool isInitialLoad = true;
   bool isLoading = false;
   AppError? error;
 
@@ -15,6 +16,7 @@ abstract class BaseNotifierProvider with ChangeNotifier {
 
   void stopLoading([bool notify = true]) {
     isLoading = false;
+    isInitialLoad = false;
     if (notify) notifyListeners();
   }
 

@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:tvmaze_app/injector.dart';
 import 'package:tvmaze_app/presentation/init/app_init.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  final delegate = await LocalizationDelegate.create(
+    fallbackLocale: 'en',
+    supportedLocales: ['en'],
+  );
 
   final providers = init();
 
-  runApp(TvMazeApp(providers));
+  runApp(LocalizedApp(delegate, TvMazeApp(providers)));
 }
 
 class TvMazeApp extends StatelessWidget {
@@ -24,7 +30,7 @@ class TvMazeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: providers,
-      child: const AppInit(),
+      builder: (ctx, child) => const AppInit(),
     );
   }
 }
