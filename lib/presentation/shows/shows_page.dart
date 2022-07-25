@@ -5,6 +5,7 @@ import 'package:tvmaze_app/injector.dart';
 import 'package:tvmaze_app/presentation/providers/shows_provider.dart';
 import 'package:tvmaze_app/presentation/shows/show_list_item.dart';
 import 'package:tvmaze_app/presentation/widgets/center_loading.dart';
+import 'package:tvmaze_app/presentation/widgets/search_app_bar.dart';
 
 class ShowsPage extends StatefulWidget {
   const ShowsPage({Key? key}) : super(key: key);
@@ -23,8 +24,9 @@ class _ShowsPageState extends State<ShowsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(translate('shows')),
+      appBar: SearchAppBar(
+        title: translate('shows'),
+        onSearch: onSearch,
       ),
       body: Consumer<ShowsProvider>(
         builder: (ctx, value, child) {
@@ -44,4 +46,6 @@ class _ShowsPageState extends State<ShowsPage> {
       ),
     );
   }
+
+  void onSearch(String value) {}
 }

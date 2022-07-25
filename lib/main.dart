@@ -28,9 +28,14 @@ class TvMazeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: providers,
-      builder: (ctx, child) => const AppInit(),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: MultiProvider(
+        providers: providers,
+        builder: (ctx, child) => const AppInit(),
+      ),
     );
   }
 }

@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class AppColors {
   static MaterialColor primarySwatch = Colors.teal;
   static Color oddListBackground = Colors.grey.shade300;
+  static Color searchFieldBackground = Colors.grey.shade100;
 }
 
 class AppValues {
   static const double showItemWidth = 100;
+  static const double defaultPadding = 8;
 }
 
 class AppTheme {
