@@ -8,8 +8,9 @@ import 'package:tvmaze_app/data/repositories/show_data_repository.dart';
 import 'package:tvmaze_app/data/services/show_service.dart';
 import 'package:tvmaze_app/domain/repositories/show_repository.dart';
 import 'package:tvmaze_app/domain/useCases/get_shows_use_case.dart';
+import 'package:tvmaze_app/domain/useCases/search_shows_by_name_use_case.dart';
 import 'package:tvmaze_app/presentation/providers/init_provider.dart';
-import 'package:tvmaze_app/presentation/providers/shows_provider.dart';
+import 'package:tvmaze_app/presentation/shows/shows_provider.dart';
 
 final _injector = GetIt.instance;
 
@@ -59,6 +60,9 @@ void _registerUseCases() {
   _injector.registerSingleton<GetShowsUseCase>(
     GetShowsUseCase(get<ShowRepository>()),
   );
+  _injector.registerSingleton<SearchShowsByNameUseCase>(
+    SearchShowsByNameUseCase(get<ShowRepository>()),
+  );
 }
 
 void _registerProviders() {
@@ -71,6 +75,7 @@ void _registerProviders() {
   _injector.registerSingleton<ShowsProvider>(
     ShowsProvider(
       get<GetShowsUseCase>(),
+      get<SearchShowsByNameUseCase>(),
     ),
   );
 }

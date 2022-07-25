@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider/provider.dart';
 import 'package:tvmaze_app/injector.dart';
-import 'package:tvmaze_app/presentation/providers/shows_provider.dart';
+import 'package:tvmaze_app/presentation/shows/shows_provider.dart';
+import 'package:tvmaze_app/presentation/shows/show_list/show_list_view.dart';
 import 'package:tvmaze_app/presentation/shows/show_list_item.dart';
 import 'package:tvmaze_app/presentation/widgets/center_loading.dart';
 import 'package:tvmaze_app/presentation/widgets/search_app_bar.dart';
@@ -34,14 +35,7 @@ class _ShowsPageState extends State<ShowsPage> {
             return const CenterLoading();
           }
           final shows = value.shows.toList();
-          return ListView.builder(
-            itemCount: shows.length,
-            itemBuilder: (ctx, i) => ShowListItem(
-              shows[i],
-              i % 2 == 0,
-              key: ValueKey(shows[i].id),
-            ),
-          );
+          return ShowListView(shows: shows);
         },
       ),
     );
