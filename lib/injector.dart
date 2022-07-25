@@ -1,7 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:tvmaze_app/data/remote_service_factory.dart';
+import 'package:tvmaze_app/data/repositories/show_data_repository.dart';
+import 'package:tvmaze_app/data/services/show_service.dart';
+import 'package:tvmaze_app/domain/repositories/show_repository.dart';
 
 final _injector = GetIt.instance;
 
@@ -24,11 +29,21 @@ void _initInjector() {
   _registerProviders();
 }
 
-void _registerNetworkService() {}
+void _registerNetworkService() {
+  _injector.registerSingleton<Dio>(createDioClient());
+}
 
-void _registerServices() {}
+void _registerServices() {
+  final client = get<Dio>();
 
-void _registerRepositories() {}
+  _injector.registerSingleton<ShowService>(ShowService(client));
+}
+
+void _registerRepositories() {
+  _injector.registerSingleton<ShowRepository>(
+    ShowDataRepository(get<ShowService>()),
+  );
+}
 
 void _registerUseCases() {}
 
