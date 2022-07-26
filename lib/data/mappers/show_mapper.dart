@@ -12,8 +12,16 @@ class ShowMapper {
         network: model.network?.name ?? 'N/A',
         status: model.status,
         rating: model.rating?.average ?? 0,
+        summary: model.summary,
+        schedule:
+            model.schedule != null ? _toScheduleEntity(model.schedule!) : null,
       );
 
   static List<ShowEntity> toEntityList(List<ShowModel> models) =>
       models.map((model) => toEntity(model)).toList();
+
+  static ScheduleEntity _toScheduleEntity(ShowSchedule model) => ScheduleEntity(
+        time: model.time,
+        days: model.days,
+      );
 }

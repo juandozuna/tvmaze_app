@@ -23,6 +23,7 @@ class ShowModel extends Equatable {
   final int weight;
   final ShowNetworkModel? network;
   final ShowImageModel? image;
+  final ShowSchedule? schedule;
   final String summary;
   final int? updated;
 
@@ -43,6 +44,7 @@ class ShowModel extends Equatable {
     required this.weight,
     required this.network,
     required this.image,
+    required this.schedule,
     required this.summary,
     required this.updated,
   });
@@ -70,6 +72,7 @@ class ShowModel extends Equatable {
         weight,
         network,
         image,
+        schedule,
         summary,
         updated,
       ];
@@ -96,4 +99,26 @@ class ShowRating extends Equatable {
 
   @override
   bool get stringify => true;
+}
+
+@JsonSerializable(explicitToJson: true)
+class ShowSchedule extends Equatable {
+  final String time;
+  final List<String> days;
+
+  const ShowSchedule({
+    required this.time,
+    required this.days,
+  });
+
+  @override
+  List<Object?> get props => [time, days];
+
+  @override
+  bool get stringify => true;
+
+  factory ShowSchedule.fromJson(Map<String, dynamic> json) =>
+      _$ShowScheduleFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ShowScheduleToJson(this);
 }

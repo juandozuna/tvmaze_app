@@ -8,6 +8,17 @@ class ModelMappers {
       name: entity.name,
       posterImage: entity.imageUrl,
       rating: entity.rating,
+      genres: entity.genres,
+      summary: entity.summary,
+      schedule:
+          entity.schedule != null ? fromScheduleEntity(entity.schedule!) : null,
+    );
+  }
+
+  static ScheduleViewModel fromScheduleEntity(ScheduleEntity entity) {
+    return ScheduleViewModel(
+      time: entity.time,
+      days: entity.days,
     );
   }
 }

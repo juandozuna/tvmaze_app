@@ -65,3 +65,14 @@ Map<String, dynamic> _$ShowRatingToJson(ShowRating instance) =>
     <String, dynamic>{
       'average': instance.average,
     };
+
+ShowSchedule _$ShowScheduleFromJson(Map<String, dynamic> json) => ShowSchedule(
+      time: json['time'] as String,
+      days: (json['days'] as List<dynamic>).map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$ShowScheduleToJson(ShowSchedule instance) =>
+    <String, dynamic>{
+      'time': instance.time,
+      'days': instance.days,
+    };
