@@ -40,5 +40,7 @@ class _ShowsPageState extends State<ShowsPage> {
     );
   }
 
-  void onSearch(String value) {}
+  void onSearch(String value) {
+    get<ShowsProvider>().searchShowsByName(value);
+  }
 }
