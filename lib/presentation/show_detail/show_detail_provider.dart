@@ -12,6 +12,9 @@ class ShowDetailProvider extends BaseNotifierProvider {
   int? selectedShowId;
   ShowViewModel? selectedShow;
 
+  // getters
+  bool get hasShow => selectedShow != null;
+
   // Methods
   void getShow(int id) async {
     selectedShowId = id;
