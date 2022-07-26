@@ -32,7 +32,7 @@ class ShowSearchPage extends StatelessWidget {
             if (value.hasError) {
               return ErrorContainer(errorMessage: value.error!.toString());
             }
-            final shows = value.shows.toList();
+            final shows = value.searchShows.toList();
             return ShowListView(shows: shows);
           },
         ),
