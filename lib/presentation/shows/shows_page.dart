@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider/provider.dart';
 import 'package:tvmaze_app/injector.dart';
+import 'package:tvmaze_app/presentation/shows/show_list/show_list_view.dart';
 import 'package:tvmaze_app/presentation/shows/shows_provider.dart';
 import 'package:tvmaze_app/presentation/widgets/center_loading.dart';
 import 'package:tvmaze_app/presentation/widgets/error_container.dart';
 import 'package:tvmaze_app/presentation/widgets/search_app_bar.dart';
-import 'package:tvmaze_app/presentation/widgets/show_list/show_list_view.dart';
 
 class ShowsPage extends StatefulWidget {
   const ShowsPage({Key? key}) : super(key: key);
