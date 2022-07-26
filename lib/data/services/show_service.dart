@@ -1,6 +1,7 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:tvmaze_app/data/models/show_model.dart';
+import 'package:tvmaze_app/data/models/show_search_response_model.dart';
 
 part 'show_service.g.dart';
 
@@ -12,5 +13,5 @@ abstract class ShowService {
   Future<List<ShowModel>> getShows([@Query('page') int page = 0]);
 
   @GET('/search/shows')
-  Future<List<ShowModel>> getShowsByName(@Query('q') String name);
+  Future<List<ShowSearchResponseModel>> getShowsByName(@Query('q') String name);
 }

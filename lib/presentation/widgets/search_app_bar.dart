@@ -87,6 +87,5 @@ class _SearchAppBarState extends State<SearchAppBar> {
     setState(() {
       _isSearching = false;
     });
-    //TODO: do clear
   }
 }

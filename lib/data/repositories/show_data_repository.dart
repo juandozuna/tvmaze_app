@@ -26,7 +26,8 @@ class ShowDataRepository implements ShowRepository {
   Future<Result<List<ShowEntity>>> getShowsByName(String name) async {
     try {
       final data = await _showService.getShowsByName(name);
-      final mapped = ShowMapper.toEntityList(data);
+      final showData = data.map((e) => e.show).toList();
+      final mapped = ShowMapper.toEntityList(showData);
       return Result.success(mapped);
     } catch (e) {
       final appError = e.toAppError();
