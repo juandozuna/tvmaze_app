@@ -22,7 +22,7 @@ class ShowModel extends Equatable {
   final ShowRating? rating;
   final int weight;
   final ShowNetworkModel? network;
-  final ShowImageModel image;
+  final ShowImageModel? image;
   final String summary;
   final int? updated;
 

@@ -41,6 +41,8 @@ class ShowsProvider extends BaseNotifierProvider {
   }
 
   Future<void> searchShowsByName(String name) async {
+    _navigatorKey.currentState!.pushNamed(AppRoute.showsSearch);
+
     startLoading();
     final result = await _searchShowsByNameUseCase(name);
 
@@ -52,8 +54,6 @@ class ShowsProvider extends BaseNotifierProvider {
     final data = result.asSuccess.value;
     searchShows = data.map((s) => ModelMappers.fromShowEntity(s)).toSet();
     stopLoading();
-
-    _navigatorKey.currentState!.pushNamed(AppRoute.showsSearch);
   }
 
   void clearSearch() {
