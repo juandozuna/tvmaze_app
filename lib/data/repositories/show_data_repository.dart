@@ -34,4 +34,16 @@ class ShowDataRepository implements ShowRepository {
       return Result.fail(appError);
     }
   }
+
+  @override
+  Future<Result<ShowEntity>> getShowById(int id) async {
+    try {
+      final data = await _showService.getShowById(id);
+      final mapped = ShowMapper.toEntity(data);
+      return Result.success(mapped);
+    } catch (e) {
+      final appError = e.toAppError();
+      return Result.fail(appError);
+    }
+  }
 }

@@ -5,4 +5,6 @@ abstract class ShowRepository {
   Future<Result<List<ShowEntity>>> getShows([int page = 0]);
 
   Future<Result<List<ShowEntity>>> getShowsByName(String name);
+
+  Future<Result<ShowEntity>> getShowById(int id);
 }

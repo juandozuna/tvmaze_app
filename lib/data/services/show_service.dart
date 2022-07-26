@@ -14,4 +14,7 @@ abstract class ShowService {
 
   @GET('/search/shows')
   Future<List<ShowSearchResponseModel>> getShowsByName(@Query('q') String name);
+
+  @GET('/shows/{id}')
+  Future<ShowModel> getShowById(@Path('id') int id);
 }
