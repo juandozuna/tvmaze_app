@@ -113,7 +113,7 @@ class EpisodeLinks extends Equatable {
 
 @JsonSerializable()
 class EpisodeSelf extends Equatable {
-  EpisodeSelf({
+  const EpisodeSelf({
     required this.href,
   });
 
@@ -135,7 +135,7 @@ class EpisodeSelf extends Equatable {
 
 @JsonSerializable()
 class EpisodeRating extends Equatable {
-  EpisodeRating({
+  const EpisodeRating({
     required this.average,
   });
 
