@@ -7,6 +7,7 @@ import 'package:tvmaze_app/data/remote_service_factory.dart';
 import 'package:tvmaze_app/data/repositories/show_data_repository.dart';
 import 'package:tvmaze_app/data/services/show_service.dart';
 import 'package:tvmaze_app/domain/repositories/show_repository.dart';
+import 'package:tvmaze_app/domain/useCases/get_episodes_for_show_use_case.dart';
 import 'package:tvmaze_app/domain/useCases/get_show_by_id_use_case.dart';
 import 'package:tvmaze_app/domain/useCases/get_shows_use_case.dart';
 import 'package:tvmaze_app/domain/useCases/search_shows_by_name_use_case.dart';
@@ -68,6 +69,9 @@ void _registerUseCases() {
   );
   _injector.registerSingleton<GetShowByIdUseCase>(
     GetShowByIdUseCase(get<ShowRepository>()),
+  );
+  _injector.registerSingleton<GetEpisodesForShowUseCase>(
+    GetEpisodesForShowUseCase(get<ShowRepository>()),
   );
 }
 

@@ -1,5 +1,6 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+import 'package:tvmaze_app/data/models/episode_model.dart';
 import 'package:tvmaze_app/data/models/show_model.dart';
 import 'package:tvmaze_app/data/models/show_search_response_model.dart';
 
@@ -17,4 +18,7 @@ abstract class ShowService {
 
   @GET('/shows/{id}')
   Future<ShowModel> getShowById(@Path('id') int id);
+
+  @GET('/shows/{id}/episodes')
+  Future<List<EpisodeModel>> getEpisodesForShow(@Path('id') int showId);
 }
