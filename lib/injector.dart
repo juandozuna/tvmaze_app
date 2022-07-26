@@ -93,6 +93,7 @@ void _registerProviders() {
   _injector.registerSingleton<ShowDetailProvider>(
     ShowDetailProvider(
       get<GetShowByIdUseCase>(),
+      get<GetEpisodesForShowUseCase>(),
     ),
   );
 }

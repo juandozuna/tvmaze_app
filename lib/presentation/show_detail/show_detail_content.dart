@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:tvmaze_app/presentation/models/show_view_model.dart';
+import 'package:tvmaze_app/presentation/show_detail/show_detail_episodes.dart';
 import 'package:tvmaze_app/presentation/theme/app_theme.dart';
 import 'package:tvmaze_app/presentation/widgets/badge.dart';
 
@@ -13,15 +14,28 @@ class ShowDetailContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildTopRow(context),
-          _buildAirTimeRow(context),
-        ],
-      ),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: _buildTopRow(context),
+        ),
+        SliverToBoxAdapter(
+          child: _buildAirTimeRow(context),
+        ),
+        const ShowDetailEpisodes(),
+      ],
     );
+    // return SingleChildScrollView(
+    //   child: Column(
+    //     crossAxisAlignment: CrossAxisAlignment.start,
+    //     children: [
+    //       _buildTopRow(context),
+    //       _buildAirTimeRow(context),
+    //       const SizedBox(height: AppValues.defaultMargin),
+    //       const ShowDetailEpisodes(),
+    //     ],
+    //   ),
+    // );
   }
 
   Widget _buildTopRow(BuildContext context) {
@@ -29,7 +43,7 @@ class ShowDetailContent extends StatelessWidget {
     return Row(
       children: [
         Expanded(child: _buildImage(context)),
-        Container(
+        SizedBox(
           width: width,
           child: Html(data: show.summary),
         ),

@@ -3,6 +3,9 @@
   "search": "Search",
   "search_placeholder": "Search for shows",
   "show_search": "Show search",
-  "airs_at": "Airs at: {{value}}",
-  "no_schedule": "No schedule available"
+  "airs_at": "Airs at: {value}",
+  "no_schedule": "No schedule available",
+  "season_no": "Season {value}",
+  "episode_no": "Episode {value}",
+  "season": "Season"
 }
