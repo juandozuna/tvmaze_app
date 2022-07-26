@@ -2,5 +2,6 @@
   "shows": "Shows",
   "search": "Search",
   "search_placeholder": "Search for shows",
-  "show_search": "Show search"
+  "show_search": "Show search",
+  "airs_at": "Airs at: {{value}}"
 }

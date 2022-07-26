@@ -14,6 +14,7 @@ class AppValues {
   static const double defaultMargin = 8;
 
   static const double defaultBorderRadius = 8;
+  static const double circularRadius = 100;
 }
 
 class AppTheme {
