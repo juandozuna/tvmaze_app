@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tvmaze_app/injector.dart';
+import 'package:tvmaze_app/presentation/show_detail/show_detail_content.dart';
 import 'package:tvmaze_app/presentation/show_detail/show_detail_provider.dart';
 import 'package:tvmaze_app/presentation/widgets/center_loading.dart';
 import 'package:tvmaze_app/presentation/widgets/error_container.dart';
@@ -38,9 +39,14 @@ class _ShowDetailPageState extends State<ShowDetailPage> {
     }
 
     return _buildScaffold(
-      const Text('showDetailProvider.selectedShow'),
+      _buildContent(provider),
       provider,
     );
+  }
+
+  Widget _buildContent(ShowDetailProvider provider) {
+    final show = provider.selectedShow!;
+    return ShowDetailContent(show);
   }
 
   Widget _buildScaffold(Widget child, ShowDetailProvider provider) {
