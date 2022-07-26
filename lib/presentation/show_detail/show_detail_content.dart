@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:tvmaze_app/presentation/models/show_view_model.dart';
-import 'package:tvmaze_app/presentation/theme/app_theme.dart';
 
 class ShowDetailContent extends StatelessWidget {
   final ShowViewModel show;
@@ -23,6 +23,7 @@ class ShowDetailContent extends StatelessWidget {
     return Row(
       children: [
         _buildImage(context),
+        Expanded(child: Html(data: show.summary)),
       ],
     );
   }
