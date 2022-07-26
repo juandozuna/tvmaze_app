@@ -38,4 +38,10 @@ abstract class BaseNotifierProvider with ChangeNotifier {
     setError(error);
     Future.delayed(duration, clearError);
   }
+
+  void resetProvider() {
+    isInitialLoad = true;
+    isLoading = false;
+    error = null;
+  }
 }

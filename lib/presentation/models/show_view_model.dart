@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-class SingleShow extends Equatable {
+class ShowViewModel extends Equatable {
   final int id;
   final String name;
   final String posterImage;
   final double rating;
 
-  const SingleShow({
+  const ShowViewModel({
     required this.id,
     required this.name,
     required this.posterImage,

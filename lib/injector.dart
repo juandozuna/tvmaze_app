@@ -87,7 +87,9 @@ void _registerProviders() {
   );
 
   _injector.registerSingleton<ShowDetailProvider>(
-    ShowDetailProvider(),
+    ShowDetailProvider(
+      get<GetShowByIdUseCase>(),
+    ),
   );
 }
 
