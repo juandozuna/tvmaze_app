@@ -32,6 +32,9 @@ ShowModel _$ShowModelFromJson(Map<String, dynamic> json) => ShowModel(
       image: json['image'] == null
           ? null
           : ShowImageModel.fromJson(json['image'] as Map<String, dynamic>),
+      schedule: json['schedule'] == null
+          ? null
+          : ShowSchedule.fromJson(json['schedule'] as Map<String, dynamic>),
       summary: json['summary'] as String,
       updated: json['updated'] as int?,
     );
@@ -53,6 +56,7 @@ Map<String, dynamic> _$ShowModelToJson(ShowModel instance) => <String, dynamic>{
       'weight': instance.weight,
       'network': instance.network?.toJson(),
       'image': instance.image?.toJson(),
+      'schedule': instance.schedule?.toJson(),
       'summary': instance.summary,
       'updated': instance.updated,
     };
