@@ -11,6 +11,7 @@ import 'package:tvmaze_app/domain/useCases/get_show_by_id_use_case.dart';
 import 'package:tvmaze_app/domain/useCases/get_shows_use_case.dart';
 import 'package:tvmaze_app/domain/useCases/search_shows_by_name_use_case.dart';
 import 'package:tvmaze_app/presentation/providers/init_provider.dart';
+import 'package:tvmaze_app/presentation/show_detail/show_detail_provider.dart';
 import 'package:tvmaze_app/presentation/shows/shows_provider.dart';
 
 final _injector = GetIt.instance;
@@ -21,6 +22,7 @@ List<SingleChildWidget> init() {
   final List<SingleChildWidget> providers = [
     Provider.value(value: get<InitProvider>()),
     ChangeNotifierProvider.value(value: get<ShowsProvider>()),
+    ChangeNotifierProvider.value(value: get<ShowDetailProvider>()),
   ];
 
   return providers;
@@ -82,6 +84,10 @@ void _registerProviders() {
       get<SearchShowsByNameUseCase>(),
       getNavigator(),
     ),
+  );
+
+  _injector.registerSingleton<ShowDetailProvider>(
+    ShowDetailProvider(),
   );
 }
 
