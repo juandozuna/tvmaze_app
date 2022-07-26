@@ -9,10 +9,6 @@ import 'package:tvmaze_app/presentation/init/app_init.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  SystemChrome.setPreferredOrientations(
-    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
-  );
-
   final delegate = await LocalizationDelegate.create(
     fallbackLocale: 'en',
     supportedLocales: ['en'],
@@ -33,6 +29,10 @@ class TvMazeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+    );
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(FocusNode());
