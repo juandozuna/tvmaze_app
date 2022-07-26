@@ -76,6 +76,7 @@ void _registerProviders() {
     ShowsProvider(
       get<GetShowsUseCase>(),
       get<SearchShowsByNameUseCase>(),
+      getNavigator(),
     ),
   );
 }

@@ -4,11 +4,13 @@ import 'package:tvmaze_app/presentation/theme/app_theme.dart';
 
 class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
+  final String? searchPlaceholder;
   final void Function(String)? onSearch;
 
   const SearchAppBar({
     Key? key,
     required this.title,
+    this.searchPlaceholder,
     this.onSearch,
   }) : super(key: key);
 
@@ -61,7 +63,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: translate('search'),
+          hintText: widget.searchPlaceholder ?? translate('search'),
         ),
       ),
     );

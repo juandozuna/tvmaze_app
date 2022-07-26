@@ -1,4 +1,6 @@
 {
   "shows": "Shows",
-  "search": "Search"
+  "search": "Search",
+  "search_placeholder": "Search for shows",
+  "show_search": "Show search"
 }
