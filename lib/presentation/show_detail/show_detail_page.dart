@@ -10,7 +10,7 @@ class ShowDetailPage extends StatefulWidget {
   const ShowDetailPage({Key? key}) : super(key: key);
 
   @override
-  _ShowDetailPageState createState() => _ShowDetailPageState();
+  State<ShowDetailPage> createState() => _ShowDetailPageState();
 }
 
 class _ShowDetailPageState extends State<ShowDetailPage> {

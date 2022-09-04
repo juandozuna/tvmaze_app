@@ -25,17 +25,6 @@ class ShowDetailContent extends StatelessWidget {
         const ShowDetailEpisodes(),
       ],
     );
-    // return SingleChildScrollView(
-    //   child: Column(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     children: [
-    //       _buildTopRow(context),
-    //       _buildAirTimeRow(context),
-    //       const SizedBox(height: AppValues.defaultMargin),
-    //       const ShowDetailEpisodes(),
-    //     ],
-    //   ),
-    // );
   }
 
   Widget _buildTopRow(BuildContext context) {

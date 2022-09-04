@@ -1,4 +1,3 @@
-import 'package:tvmaze_app/domain/entities/episode_entity.dart';
 import 'package:tvmaze_app/domain/entities/season_entity.dart';
 import 'package:tvmaze_app/domain/entities/show_entity.dart';
 import 'package:tvmaze_app/domain/result.dart';

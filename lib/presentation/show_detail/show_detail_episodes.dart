@@ -15,7 +15,7 @@ class ShowDetailEpisodes extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<ShowDetailProvider>(context);
     if (provider.seasons.isNotEmpty) {
-      return _buildContent(provider.seasons);
+      return _buildContent(provider.seasons, context);
     }
     return FutureBuilder<List<SeasonEntity>>(
       future: provider.getEpisodesForShow(),
@@ -25,49 +25,92 @@ class ShowDetailEpisodes extends StatelessWidget {
         }
 
         final data = snapshot.data ?? [];
-        return _buildContent(data);
+        return _buildContent(data, context);
       },
     );
   }
 
-  Widget _buildContent(List<SeasonEntity> seasons) {
+  Widget _buildContent(List<SeasonEntity> seasons, BuildContext context) {
     return SliverList(
       delegate: SliverChildListDelegate(
-        seasons.map((season) => _buildSeason(season)).toList(),
+        seasons
+            .asMap()
+            .entries
+            .map(
+              (pair) => _ShowSeason(
+                pair.value,
+                pair.key % 2 == 0,
+                key: ValueKey(pair.value.season),
+              ),
+            )
+            .toList(),
       ),
     );
   }
+}
 
-  Widget _buildSeason(SeasonEntity season) {
+class _ShowSeason extends StatelessWidget {
+  final SeasonEntity season;
+  final bool isEven;
+
+  const _ShowSeason(this.season, this.isEven, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final episodes = season.episodes;
+
     return Container(
-      margin: const EdgeInsets.all(AppValues.defaultMargin),
+      padding: const EdgeInsets.all(AppValues.defaultMargin),
+      color: !isEven ? AppColors.white : AppColors.oddListBackground,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(translate('season_no', args: {'value': season.season})),
+          Text(
+            translate('season_no', args: {'value': season.season}),
+            style: Theme.of(context).textTheme.headline5,
+          ),
           const SizedBox(height: 8),
-          Wrap(
-            children: season.episodes
-                .map((episode) => _buildEpisode(episode))
-                .toList(),
-            alignment: WrapAlignment.spaceEvenly,
-            spacing: AppValues.defaultMargin,
+          SizedBox(
+            height: 80,
+            child: ListView.builder(
+              itemCount: episodes.length,
+              itemBuilder: (context, index) => _buildEpisode(
+                episodes[index],
+                context,
+              ),
+              scrollDirection: Axis.horizontal,
+            ),
           )
         ],
       ),
     );
   }
 
-  Widget _buildEpisode(EpisodeEntity episode) {
-    return Column(
-      children: [
-        CachedNetworkImage(
-          imageUrl: episode.image,
-          width: AppValues.episodeWidth,
-        ),
-        const SizedBox(height: AppValues.defaultMargin),
-        Text('${episode.number.toString()}: ${episode.name}'),
-      ],
+  Widget _buildEpisode(EpisodeEntity episode, BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(
+        right: AppValues.defaultMargin,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CachedNetworkImage(
+            imageUrl: episode.image,
+            width: AppValues.episodeWidth,
+            height: AppValues.episodeHeight,
+          ),
+          const SizedBox(height: 3),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: AppValues.defaultPadding,
+            ),
+            child: Text(
+              episode.name,
+              style: Theme.of(context).textTheme.caption,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
