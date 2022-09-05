@@ -10,12 +10,14 @@ class EpisodeProvider extends BaseNotifierProvider {
   );
 
   int? episodeId;
+  int? seasonNumber;
   EpisodeEntity? episode;
 
   bool get hasEpisode => episode != null;
 
-  void getEpisode(int id) async {
+  void getEpisode(int id, int seasonNumber) async {
     episodeId = id;
+    this.seasonNumber = seasonNumber;
     notifyListeners();
 
     startLoading();
@@ -36,5 +38,6 @@ class EpisodeProvider extends BaseNotifierProvider {
     super.resetProvider();
     episodeId = null;
     episode = null;
+    seasonNumber = null;
   }
 }

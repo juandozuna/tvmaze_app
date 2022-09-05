@@ -92,7 +92,7 @@ class _ShowSeason extends StatelessWidget {
   Widget _buildEpisode(EpisodeEntity episode, BuildContext context) {
     return InkWell(
       onTap: () {
-        get<EpisodeProvider>().getEpisode(episode.id);
+        get<EpisodeProvider>().getEpisode(episode.id, episode.season);
         Navigator.of(context).pushNamed(AppRoute.episode);
       },
       child: Container(

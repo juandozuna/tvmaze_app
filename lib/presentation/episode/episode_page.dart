@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tvmaze_app/injector.dart';
+import 'package:tvmaze_app/presentation/episode/episode_content.dart';
 import 'package:tvmaze_app/presentation/episode/episode_provider.dart';
 import 'package:tvmaze_app/presentation/widgets/error_container.dart';
 
@@ -38,15 +39,14 @@ class _EpisodePageState extends State<EpisodePage> {
       );
     }
 
-    return _buildScaffold(
-      _buildContent(provider),
-      provider,
+    return Scaffold(
+      body: _buildContent(provider),
     );
   }
 
   Widget _buildContent(EpisodeProvider provider) {
-    final episode = provider.episode;
-    return Container();
+    final episode = provider.episode!;
+    return EpisodeContent(episode, episode.season);
   }
 
   Widget _buildScaffold(Widget child, EpisodeProvider provider) {

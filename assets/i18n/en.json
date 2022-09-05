@@ -8,5 +8,6 @@
   "season_no": "Season {value}",
   "episode_no": "Episode {value}",
   "season": "Season",
-  "genres": "Genres"
+  "genres": "Genres",
+  "summary": "Summary"
 }
