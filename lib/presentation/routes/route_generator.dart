@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tvmaze_app/presentation/episode/episode_page.dart';
 import 'package:tvmaze_app/presentation/routes/route.dart';
 import 'package:tvmaze_app/presentation/show_detail/show_detail_page.dart';
 import 'package:tvmaze_app/presentation/shows/show_search_page.dart';
@@ -11,5 +12,6 @@ class RouteGenerator {
     AppRoute.shows: (_) => const ShowsPage(),
     AppRoute.showsSearch: (_) => const ShowSearchPage(),
     AppRoute.showDetails: (_) => const ShowDetailPage(),
+    AppRoute.episodeDetail: (_) => const EpisodePage()
   };
 }

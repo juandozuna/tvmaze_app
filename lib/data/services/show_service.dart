@@ -21,4 +21,7 @@ abstract class ShowService {
 
   @GET('/shows/{id}/episodes')
   Future<List<EpisodeModel>> getEpisodesForShow(@Path('id') int showId);
+
+  @GET('/episodes/{id}')
+  Future<EpisodeModel> getEpisodeById(@Path('id') int episodeId);
 }

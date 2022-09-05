@@ -1,6 +1,7 @@
 import 'package:tvmaze_app/data/mappers/episode_mapper.dart';
 import 'package:tvmaze_app/data/mappers/show_mapper.dart';
 import 'package:tvmaze_app/data/services/show_service.dart';
+import 'package:tvmaze_app/domain/entities/episode_entity.dart';
 import 'package:tvmaze_app/domain/entities/season_entity.dart';
 import 'package:tvmaze_app/domain/entities/show_entity.dart';
 import 'package:tvmaze_app/domain/repositories/show_repository.dart';
@@ -54,6 +55,18 @@ class ShowDataRepository implements ShowRepository {
     try {
       final data = await _showService.getEpisodesForShow(showId);
       final mapped = EpisodeMapper.toEntityList(data);
+      return Result.success(mapped);
+    } catch (e) {
+      final appError = e.toAppError();
+      return Result.fail(appError);
+    }
+  }
+
+  @override
+  Future<Result<EpisodeEntity>> getEpisodeById(int id) async {
+    try {
+      final data = await _showService.getEpisodeById(id);
+      final mapped = EpisodeMapper.toEntity(data);
       return Result.success(mapped);
     } catch (e) {
       final appError = e.toAppError();
