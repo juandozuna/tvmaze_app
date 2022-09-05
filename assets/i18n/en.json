@@ -7,5 +7,6 @@
   "no_schedule": "No schedule available",
   "season_no": "Season {value}",
   "episode_no": "Episode {value}",
-  "season": "Season"
+  "season": "Season",
+  "genres": "Genres"
 }

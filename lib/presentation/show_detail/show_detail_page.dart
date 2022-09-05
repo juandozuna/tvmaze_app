@@ -38,9 +38,8 @@ class _ShowDetailPageState extends State<ShowDetailPage> {
       );
     }
 
-    return _buildScaffold(
-      _buildContent(provider),
-      provider,
+    return Scaffold(
+      body: _buildContent(provider),
     );
   }
 

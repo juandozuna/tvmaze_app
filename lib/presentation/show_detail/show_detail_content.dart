@@ -16,26 +16,20 @@ class ShowDetailContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(
-          child: _buildTopRow(context),
+        SliverAppBar(
+          expandedHeight: 500,
+          floating: false,
+          pinned: true,
+          title: Text(show.name),
+          flexibleSpace: FlexibleSpaceBar(
+            centerTitle: true,
+            background: _buildImage(context),
+          ),
         ),
         SliverToBoxAdapter(
           child: _buildAirTimeRow(context),
         ),
         const ShowDetailEpisodes(),
-      ],
-    );
-  }
-
-  Widget _buildTopRow(BuildContext context) {
-    final width = MediaQuery.of(context).size.width * 0.63;
-    return Row(
-      children: [
-        Expanded(child: _buildImage(context)),
-        SizedBox(
-          width: width,
-          child: Html(data: show.summary),
-        ),
       ],
     );
   }
@@ -48,21 +42,79 @@ class ShowDetailContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: AppValues.defaultPadding),
           Text(
             translate('airs_at', args: {'value': show.schedule!.time}),
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.headline6,
           ),
           const SizedBox(height: AppValues.defaultMargin),
-          Wrap(children: [for (final day in show.schedule!.days) Badge(day)])
+          Wrap(children: [for (final day in show.schedule!.days) Badge(day)]),
+          const SizedBox(height: AppValues.defaultMargin),
         ],
       ),
     );
   }
 
   Widget _buildImage(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: show.posterImage,
-      fit: BoxFit.fill,
+    return Stack(
+      children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: double.infinity,
+          child: CachedNetworkImage(
+            imageUrl: show.posterImage,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [
+                  AppColors.white.withAlpha(200),
+                  Colors.transparent,
+                ])),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildGenres(context),
+                _buildSummary(),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _buildSummary() {
+    return Container(
+      padding: const EdgeInsets.only(top: 0),
+      child: Html(data: show.summary),
+    );
+  }
+
+  Widget _buildGenres(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(AppValues.defaultPadding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            translate('genres'),
+            style: Theme.of(context).primaryTextTheme.headline4,
+          ),
+          const SizedBox(height: AppValues.defaultPadding),
+          Wrap(
+            children: [for (final genre in show.genres) Badge(genre)],
+          )
+        ],
+      ),
     );
   }
 }
