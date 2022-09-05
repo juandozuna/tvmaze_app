@@ -113,7 +113,7 @@ class _ShowSeason extends StatelessWidget {
                 left: AppValues.defaultPadding,
               ),
               child: Text(
-                episode.name,
+                '${episode.number}. ${episode.name}',
                 style: Theme.of(context).textTheme.caption,
               ),
             ),
