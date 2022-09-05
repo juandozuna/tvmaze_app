@@ -12,6 +12,8 @@ class EpisodeProvider extends BaseNotifierProvider {
   int? episodeId;
   EpisodeEntity? episode;
 
+  bool get hasEpisode => episode != null;
+
   void getEpisode(int id) async {
     episodeId = id;
     notifyListeners();
