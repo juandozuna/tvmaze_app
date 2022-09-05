@@ -4,6 +4,9 @@ import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider/provider.dart';
 import 'package:tvmaze_app/domain/entities/episode_entity.dart';
 import 'package:tvmaze_app/domain/entities/season_entity.dart';
+import 'package:tvmaze_app/injector.dart';
+import 'package:tvmaze_app/presentation/episode/episode_provider.dart';
+import 'package:tvmaze_app/presentation/routes/route.dart';
 import 'package:tvmaze_app/presentation/show_detail/show_detail_provider.dart';
 import 'package:tvmaze_app/presentation/theme/app_theme.dart';
 import 'package:tvmaze_app/presentation/widgets/center_loading.dart';
@@ -87,29 +90,35 @@ class _ShowSeason extends StatelessWidget {
   }
 
   Widget _buildEpisode(EpisodeEntity episode, BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(
-        right: AppValues.defaultMargin,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CachedNetworkImage(
-            imageUrl: episode.image,
-            width: AppValues.episodeWidth,
-            height: AppValues.episodeHeight,
-          ),
-          const SizedBox(height: 3),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: AppValues.defaultPadding,
+    return InkWell(
+      onTap: () {
+        get<EpisodeProvider>().getEpisode(episode.id);
+        Navigator.of(context).pushNamed(AppRoute.episode);
+      },
+      child: Container(
+        margin: const EdgeInsets.only(
+          right: AppValues.defaultMargin,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CachedNetworkImage(
+              imageUrl: episode.image,
+              width: AppValues.episodeWidth,
+              height: AppValues.episodeHeight,
             ),
-            child: Text(
-              episode.name,
-              style: Theme.of(context).textTheme.caption,
+            const SizedBox(height: 3),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: AppValues.defaultPadding,
+              ),
+              child: Text(
+                episode.name,
+                style: Theme.of(context).textTheme.caption,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -12,6 +12,6 @@ class RouteGenerator {
     AppRoute.shows: (_) => const ShowsPage(),
     AppRoute.showsSearch: (_) => const ShowSearchPage(),
     AppRoute.showDetails: (_) => const ShowDetailPage(),
-    AppRoute.episodeDetail: (_) => const EpisodePage()
+    AppRoute.episode: (_) => const EpisodePage()
   };
 }

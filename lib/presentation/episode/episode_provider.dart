@@ -1,6 +1,5 @@
 import 'package:tvmaze_app/domain/entities/episode_entity.dart';
 import 'package:tvmaze_app/domain/useCases/get_episode_by_id_use_case.dart';
-import 'package:tvmaze_app/presentation/models/model_mappers.dart';
 import 'package:tvmaze_app/presentation/providers/base_notifier_provider.dart';
 
 class EpisodeProvider extends BaseNotifierProvider {
@@ -10,11 +9,11 @@ class EpisodeProvider extends BaseNotifierProvider {
     this._getEpisodeByIdUseCase,
   );
 
-  int? selectedEpisode;
+  int? episodeId;
   EpisodeEntity? episode;
 
   void getEpisode(int id) async {
-    selectedEpisode = id;
+    episodeId = id;
     notifyListeners();
 
     startLoading();
@@ -28,5 +27,12 @@ class EpisodeProvider extends BaseNotifierProvider {
 
     episode = result.asSuccess.value;
     stopLoading();
+  }
+
+  @override
+  void resetProvider() {
+    super.resetProvider();
+    episodeId = null;
+    episode = null;
   }
 }

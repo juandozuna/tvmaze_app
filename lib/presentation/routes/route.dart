@@ -5,5 +5,5 @@ class AppRoute {
   static const String shows = '/shows';
   static const String showsSearch = '/shows/search';
   static const String showDetails = '/show/details';
-  static const String episodeDetail = '/episode/details';
+  static const String episode = '/episode/details';
 }
